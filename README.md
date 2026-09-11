@@ -116,7 +116,7 @@
                 <p>Homem-Aranha: Um Novo Dia</p>
             </div>
             <div class="filme-card">
-                <img src="images.jfif" alt="Cartaz do filme Jogos Vorazes: Amanhecer da Colheita">
+                <img src="images.jfif" alt="Cartaz do filme Jogos Vorazes: Amanhecer na Colheita">
                 <p>Jogos Vorazes: Amanhecer da Colheita</p>
             </div>
             <div class="filme-card">
