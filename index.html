@@ -3,154 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOVE</title>
+    <title>Ingresse</title>
     <style>
-        /* css vai aqui */
-        body {
-            background-color: #f3f3f3;
+       body {
+            background-color: var(--primary-color)      ;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            color: var(--secondary-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        :root{
+            --primary-color: #c0c0c0;
+            --secondary-color: #222;
+        }
+        body.dark-mode {
+            background-color: #222;
+            color: #f3f3f3;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body.dark-mode #escuro {
+            background-color: #f3f3f3;
             color: #222;
+            transition: background-color 0.3s, color 0.3s;
         }
-
-        h1, h2, #instrucao {
-            text-align: center;
-        }
-
-        header {
-            padding: 20px 20px 10px;
-            text-align: center;
-        }
-
-        #main-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px 30px;
-            line-height: 1.7;
-        }
-
-        footer {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px 30px 40px;
-            text-align: center;
-        }
-
-        #declarar {
-            position: relative;
-            width: 92px;
-            height: 82px;
-            margin: 20px auto 30px;
-            border: none;
-            background: transparent;
+        #escuro {
+            background-color: #222;
+            color: #f3f3f3;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
             cursor: pointer;
-            display: block;
-            transition: transform 0.2s ease, filter 0.2s ease;
-            filter: drop-shadow(0 6px 10px rgba(255, 45, 85, 0.18));
-        }
-
-        #declarar:hover {
-            transform: scale(1.08);
-        }
-
-        #declarar::before,
-        #declarar::after {
-            content: "";
-            position: absolute;
-            top: 8px;
-            width: 48px;
-            height: 72px;
-            background: linear-gradient(180deg, #ff5a86 0%, #ff2d55 100%);
-            border-radius: 50px 50px 0 0;
-            transition: background 0.2s ease;
-        }
-
-        #declarar::before {
-            left: 42px;
-            transform: rotate(-45deg);
-            transform-origin: 0 100%;
-        }
-
-        #declarar::after {
-            left: 0;
-            transform: rotate(45deg);
-            transform-origin: 100% 100%;
-        }
-
-        #declarar:hover::before,
-        #declarar:hover::after {
-            background: linear-gradient(180deg, #ff7ea3 0%, #ff426f 100%);
-        }
-
-        #menssagem {
-            display: none;
-            max-width: 700px;
-            margin: 0 auto 25px;
-            padding: 15px 18px;
-            border: 1px solid #f0d9df;
+            margin-left: 5px;
+            margin-top: 5px;
+            transition: background-color 0.3s, color 0.3s;
             border-radius: 12px;
-            background: #fff7f9;
-            line-height: 1.8;
-            white-space: pre-line;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-family: 'Arial Black', sans-serif, monospace;
+        }
+        h3 {
+            text-align: center;
+            margin-top: 5px;
+            font-family: 'Fira Sans', sans-serif, monospace;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 14px;
+        }
+        p {
+            font-family: 'Martel', serif;
+            margin: 5px 5px 5px 5px;
+        }
+        main {
+            padding: 20px;
+        }
+        .filmes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+        .filme-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+        }
+        .filme-card img {
+            display: block;
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 14px;
+        }
+        .filme-card p {
+            margin: 10px 0 0;
+            font-weight: bold;
+            text-align: center;
+        }
+        body.dark-mode .filme-card {
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
         }
     </style>
     <script>
-        defer src="https://cloud.umami.is/script.js" data-website-id="823fb030-821a-4d43-8fc9-ffcb6bbcb832">
-        // javascript vai aqui
-        function declarar() {
-            const paragrafo = document.querySelector("#menssagem");
-            paragrafo.innerText = "Cometi erros em minha vida\nMas nenhum foi te amar\nDevo devoção a ti\nE a ti eu vou me entregar\nMe desculpa se te aborreci\nMe desculpa se te magoei\nMas eu não posso viver sem você\nEu te amo e quero ficar com você para sempre\nME DESCULPA S2";
-            paragrafo.style.display = paragrafo.style.display === "block" ? "none" : "block";
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
         }
+        
     </script>
 </head>
 <body>
     <header>
-        <h1>Meu site</h1>
+        <button id="escuro" onclick="toggleDarkMode()">Mudar Tema</button>
+        <h1>Ingresse</h1>
+        <h3>Bem-vindo ao Ingresse!</h3>
     </header>
-
-    <section id="main-content">
-        
-        <h2>Como comecei a gostar da minha namorada</h2>
-        <p id="instrucao">Aperte no coração</p>
-        <p>Conheci ela na escola. Levou um tempo até a gente realmente se aproximar. No começo éramos só colegas, nem era tão próxima até que de um momento decidi me aproximar dela.</p>
-
-        <p>Ela era mais próxima de Rafik e Anna Clara. Ela tinha o costume de estralar o dedo dos outros, eu sentia muito ciúmes disso, porque eu parava de estralar meus dedos para poder fazer com que ela pudesse estralar os meus. Comecei a pedir pra dividir o fone com ela pensando que assim ela teria minha atenção, conheci seu gosto musical assim, Taylor Swift, Rita Lee e Sabrina Carpenter (até hoje descubro seus gostos).</p>
-
-        <p>Não foi só a aparência que me conquistou — foi tudo junto. Mas teve um momento específico que marcou: a sua risada. Lembro disso com muito carinho. Não consigo nem explicar direito, mas naquele momento eu entendi que gostava dela.</p>
-
-        <p>A gente começou a passar mais tempo junto. Tinha essas tardes na casa dela onde a gente ficava conversando, rindo, vivendo momentos simples mas que significavam tudo. Eram aqueles momentos em que você não quer que termine. Só você, ela, e aquela sensação estranha no peito.</p>
-
-        <p>Ia vê-la com muita frequência, parei de ir na casa do meu melhor amigo pra ir ver ela, eu nem ia jogar nem nada, ficávamos a tarde toda na casa dela assistindo uma série, conversando, etc. As vezes rolava de ir na casa dela depois da escola e as vezes alguém acaba me acompanhando, nem sempre mas eu não gostava disso, queria passar um momento só com ela, as vezes Pedro Afonso ia lá comigo e eu sentia raiva disso, porque ele é muito sem o que fazer, ficava na casa dele inteiro atrapalhando meu lance.</p>
-
-        <p>Tem tantos detalhes dela que ficam na memória:</p>
-        <ul>
-            <li>Aquela risada dela, que eu surpreendentemente acho bonita, contagiante, significa pra mim que ela gostou do que falei</li>
-            <li>A voz doce e fofa quando ela fala, tão meiga</li>
-            <li>Os cabelos dela, tão bem cuidados</li>
-            <li>E tem até aquele creme de maracujá que ela usava no começo da amizade que ficou marcado na minha memória!</li>
-        </ul>
-
-        <p>Eu gostava dela, mas morreria antes de contar. Aí veio a ideia: eu deixei estrategicamente minha conta do Instagram no celular dela, sabendo que ela era curiosa. Meu plano? Ela pesquisaria nas conversas com meu melhor amigo e veria que eu falava que gostava dela.</p>
-
-        <p>Durante minha viagem que fiz para Barra Grande, ela me mandou mensagem dizendo que queria conversar comigo quando eu voltasse. Meu coração disparou.</p>
-
-        <p>No dia que voltei fui correndo pra casa dela, só tomei um banho e fui. Ela deixou claro que já sabia que eu gostava dela (porque viu as mensagens), MAS queria que eu dissesse para ela. Queria ouvir de mim. Não era só saber — era ouvir.</p>
-
-        <p>Então a gente ficou ali, morrendo de vergonha, e eu com muito medo dela dizer não. A tensão era real. Mas quando finalmente dissemos que gostávamos um do outro... combinamos de dizer ao mesmo tempo.</p>
-
-        
-    </section>
-
+    <main>
+        <div class="filmes-grid">
+            <div class="filme-card">
+                <img src="AO.jfif" alt="Cartaz do filme A Odisseia">
+                <p>A Odisseia</p>
+            </div>
+            <div class="filme-card">
+                <img src="HAUND.jfif" alt="Cartaz do filme Homem-Aranha: Um Novo Dia">
+                <p>Homem-Aranha: Um Novo Dia</p>
+            </div>
+            <div class="filme-card">
+                <img src="images.jfif" alt="Cartaz do filme Jogos Vorazes: Amanhecer da Colheita">
+                <p>Jogos Vorazes: Amanhecer da Colheita</p>
+            </div>
+            <div class="filme-card">
+                <img src="PCUAD.jfif" alt="Cartaz do filme Patrulha Canina: Uma Aventura Dino">
+                <p>Patrulha Canina: Uma Aventura Dino</p>
+            </div>
+            <div class="filme-card">
+                <img src="RE.jfif" alt="Cartaz do filme Resident Evil">
+                <p>Resident Evil</p>
+            </div>
+            <div class="filme-card">
+                <img src="TS5.jfif" alt="Cartaz do filme Toy Story 5">
+                <p>Toy Story 5</p>
+            </div>
+            <div class="filme-card">
+                <img src="" alt="Sem mais filmes em cartaz :P">
+                <p>Sem mais filmes em cartaz :P</p>
+            </div>
+        </div>
+    </main>
     <footer>
-        <button id="declarar" onclick="declarar()">Declarar</button>
-        <p id="menssagem" style="display: none;"></p>
-        <p>Esse é um real pedido de desculpas por como fui mau com você<br>É um trabalho de constante melhoria, tirei esse tempo pra repensar sobre meus atos e n irei repetir oque cometi, estarei aprendendo com meus erros<br>Você é especial para mim<br>Você me desculpa?</p>
+        <p>&copy; 2026 Ingresse. Todos os direitos reservados.</p>
+        <p style="font-size: 12px;">Desenvolvido por Guilherme Adorno Rodrigues</p>
+        <p style="color: var(--primary-color); font-size: 12px;">Parabéns por encontrar meu segredo: [SEGREDO]</p>
     </footer>
-
-
-
-
 </body>
 </html>
